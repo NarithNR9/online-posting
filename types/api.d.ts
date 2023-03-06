@@ -1,5 +1,5 @@
 export interface IApiOption {
-  methods: 'GET'  | 'POST' | 'PUT' | 'PATCH' | 'DELETE',
-  body: any,
+  method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'
+  data: any
   headers: any
 }

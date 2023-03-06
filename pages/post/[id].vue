@@ -1,21 +1,17 @@
 <template>
   <div>
 
-   
-
-    <PostDetails :post="post.data"/>
+    <PostDetails :post="post"/>
   </div>
 </template>
 
 <script setup>
+  import { getApi } from '~~/composables/useApi';
 
   const {id} = useRoute().params
 
-  const {data: post} = await useFetch('https://learning.tech-cambodia.com/cms/items/posts/'+id)
+  const {data: post} = await getApi('/items/posts/'+id)
 
-  // if (!product.value) { 
-  //   throw createError({statusCode: 404, statusMessage: 'Product not found!'})
-  // }
 
 </script>
 

@@ -20,9 +20,9 @@
 </template>
 
 <script setup>
-import { useApi } from '~~/composables/useApi';
+import { getApi } from '~~/composables/useApi';
 
-const { data: posts } = await useApi('/items/posts', "GET")
+const { data: posts } = await getApi('/items/posts')
 
 </script>
 

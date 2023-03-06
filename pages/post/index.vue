@@ -11,7 +11,7 @@
             type="text"
             class="ring ring-offset-8 ring-green-300 w-full rounded-sm focus:outline-none focus:ring-green-500"
             placeholder="Title"
-            v-model="title"
+            v-model="formData.title"
             required
           />
         </div>
@@ -21,7 +21,7 @@
             class="ring ring-offset-8 ring-green-300 w-full rounded-sm focus:outline-none focus:ring-green-500"
             placeholder="Description"
             rows="3"
-            v-model="description"
+            v-model="formData.description"
             required
           ></textarea>
         </div>
@@ -46,33 +46,40 @@
 
 <script setup>
 import { ref } from 'vue'
-import axios from 'axios'
+import { postImg, postApi } from '~~/composables/useApi'
 
-const title = ref('')
-const file = ref(null)
-const description = ref('')
+const formData = ref({
+  data: '',
+  description: '',
+  file: null
+})
+
 const error = ref('')
 
 const handlePost = async () => {
-  if (file.value) {
+
+  if (formData.value.file) {
     // file upload
     try {
-      const res = await axios('https://learning.tech-cambodia.com/cms/files', {
+      const res = await postImg('/files', {
         method: 'POST',
         headers: {
           'Content-Type': 'multipart/form-data',
         },
         data: {
-          thumbnail: file.value,
+          thumbnail: formData.value.file,
         },
       })
+
       if (res) {
-        await axios
-          .post('https://learning.tech-cambodia.com/cms/items/posts', {
-            title: title.value,
-            description: description.value,
-            thumbnail: res.data.data.id,
-          })
+        postApi('/items/posts', {
+          data: {
+            title: formData.value.title,
+            description: formData.value.description,
+            thumbnail: res.data.id,
+          },
+          method: 'POST',
+        })
           .then(async () => await navigateTo('/'))
           .catch((err) => console.log(err))
       }
@@ -90,10 +97,10 @@ const handleFile = (e) => {
 
   if (seleted.size > limitedSize) {
     error.value = 'Size of the image must be equal or less tha 1MB '
-    file.value = null
+    formData.value.file = null
   } else {
     if (seleted && types.includes(seleted.type)) {
-      file.value = seleted
+      formData.value.file = seleted
       error.value = null
     } else {
       error.value = 'Only images file will be accepted.'
