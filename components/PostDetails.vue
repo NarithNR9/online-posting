@@ -10,7 +10,7 @@
     </div>
     <div class="flex flex-col md:flex-row lg:grid md:grid-cols-2 md:gap-10">
       <div class="md:p-7">
-        <img
+        <img 
           :src="
             'https://learning.tech-cambodia.com/cms/assets/' + post.thumbnail
           "

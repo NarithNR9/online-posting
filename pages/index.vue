@@ -13,16 +13,17 @@
   <div
     class="grid grid-cols-1 w-3/4 sm:w-full sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
   >
-    <div v-for="p in post.data">
+    <div v-for="p in posts">
       <PostCard :post="p" />
     </div>
   </div>
 </template>
 
 <script setup>
-const { data: post } = await useFetch(
-  'https://learning.tech-cambodia.com/cms/items/posts'
-)
+import { useApi } from '~~/composables/useApi';
+
+const { data: posts } = await useApi('/items/posts', "GET")
+
 </script>
 
 <style scoped></style>

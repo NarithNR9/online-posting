@@ -1,10 +1,7 @@
 <template>
   <div>
 
-    <Head>
-      <Title>Nuxt | {{ post.data.title }}</Title>
-      <Meta name="description" :content="post.data.description"></Meta>
-    </Head>
+   
 
     <PostDetails :post="post.data"/>
   </div>
