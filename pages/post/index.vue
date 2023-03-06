@@ -73,7 +73,7 @@ const handlePost = async () => {
 
       if (res) {
         postApi('/items/posts', {
-          data: {
+          body: {
             title: formData.value.title,
             description: formData.value.description,
             thumbnail: res.data.id,

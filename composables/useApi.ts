@@ -13,6 +13,10 @@ export const postImg = async (endpoint: string, options: IApiOption) => {
 }
 
 export const postApi = async (endpoint: string, options: IApiOption) => {
-  const response = await axios(baseUrl + endpoint, options)
+  const response = await $fetch(baseUrl + endpoint, options)
   return response
 }
+
+export const deletePost = async (endpoint: string, options: IApiOption) => {
+  await $fetch(baseUrl + endpoint, options)
+} 

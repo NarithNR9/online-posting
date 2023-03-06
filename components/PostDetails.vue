@@ -28,13 +28,12 @@
 </template>
 
 <script setup>
-import axios from 'axios'
+import { deletePost } from '~~/composables/useApi';
 
 const { post } = defineProps(['post'])
 
 const handleDeletePost = () => {
-  axios
-    .delete('https://learning.tech-cambodia.com/cms/items/posts/' + post.id)
+  deletePost('/items/posts/' + post.id, {method: 'DELETE'})
     .then(async () => {
       alert('successfully delete post')
       await navigateTo('/')
