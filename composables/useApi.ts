@@ -20,3 +20,7 @@ export const postApi = async (endpoint: string, options: IApiOption) => {
 export const deletePost = async (endpoint: string, options: IApiOption) => {
   await $fetch(baseUrl + endpoint, options)
 } 
+
+export const updatePost = async (endpoint: string, options: IApiOption) => {
+  await $fetch(baseUrl + endpoint, options)
+} 

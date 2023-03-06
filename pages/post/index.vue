@@ -48,8 +48,10 @@
 import { ref } from 'vue'
 import { postImg, postApi } from '~~/composables/useApi'
 
+this.$nuxt.$on('eventName', ($event) => this.test($event))
+
 const formData = ref({
-  data: '',
+  title: '',
   description: '',
   file: null
 })
