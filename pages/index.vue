@@ -1,8 +1,8 @@
 <template>
-   <Head>
-      <Title>Nuxt | Online Posting</Title>
-      <Meta name="description" content="post online with nuxt 3 app"></Meta>
-    </Head>
+  <Head>
+    <Title>Nuxt | Online Posting</Title>
+    <Meta name="description" content="post online with nuxt 3 app"></Meta>
+  </Head>
   <NuxtLink to="/post">
     <div
       class="btn w-20 text-center hover:bg-green-800 cursor-pointer shadow-lg mb-3"
@@ -20,10 +20,9 @@
 </template>
 
 <script setup>
-import { getApi } from '~~/composables/useApi';
+import { getApi } from '~~/composables/useApi'
 
 const { data: posts } = await getApi('/items/posts')
-
 </script>
 
 <style scoped></style>

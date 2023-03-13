@@ -55,7 +55,7 @@ const formData = ref({
 
 const error = ref('')
 
-const handleUpdate = async () => {
+const handleUpdate = () => {
 
   try {
     updatePost(`/items/posts/${post.id}`, {
@@ -65,7 +65,7 @@ const handleUpdate = async () => {
       },
       method: 'PATCH',
     })
-      .then(async () => await navigateTo('/'))
+      .then(() => navigateTo('/'))
       .catch((err) => console.log(err))
   } catch (error) {
     console.log(error)

@@ -1,6 +1,6 @@
 <template>
-  <EditPost v-if="editComponent" @close="editComponent=false" :post="post"/>
-  <div class="card" >
+  <EditPost v-if="editComponent" @close="editComponent = false" :post="post" />
+  <div class="card">
     <div class="flex justify-end space-x-2">
       <button
         @click="handleEditPost"
@@ -52,7 +52,6 @@ const handleDeletePost = () => {
 const handleEditPost = () => {
   editComponent.value = true
 }
-
 </script>
 
 <style scoped>
